@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Queue Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body class="flex flex-col min-h-screen justify-between">
+    <div class="flex-grow flex flex-col justify-center items-center text-center px-4">
+        <div class="flex flex-col md:flex-row justify-center items-start w-full max-w-4xl">
+            <div class="md:w-1/2 mb-8 md:mb-0 md:pr-16">
+                <p class="text-2xl md:text-3xl font-bold mb-4 text-left">
+                    Anda sekarang berada dalam antrian.
+                </p>
+                <p class="text-xl md:text-2xl text-left">
+                    Terima kasih telah menunggu.
+                </p>
+            </div>
+            <div class="md:w-1/2 text-left md:pl-16">
+                <p class="text-xl md:text-2xl font-bold mb-4" id="waiting-time">
+                    Perkiraan waktu tunggu Anda tidak diketahui.
+                </p>
+                <p class="text-base md:text-lg mb-4">
+                    Berhubung banyaknya permintaan ke situs kami, kami menggunakan antrian virtual untuk membatasi jumlah pengguna situs web pada waktu bersamaan. Ini kami terapkan untuk memastikan Anda mendapatkan pengalaman daring yang terbaik.
+                </p>
+                <p class="text-base md:text-lg font-bold mb-4">
+                    Laman ini akan otomatis dimuat ulang, mohon jangan tutup browser Anda.
+                </p>
+                <p class="text-base md:text-lg" id="last-updated">
+                    Terakhir diperbarui -
+                </p>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="flex flex-col md:flex-row justify-between items-center max-w-4xl mx-auto px-4">
+            <div class="flex items-center mb-4 md:mb-0">
+                <img alt="Cloudflare logo" class="mr-2" height="40" src="https://storage.googleapis.com/a1aa/image/NCG6eD4RU3xkHyYR2NW2xtcNbo0n8xC4tjLB0fKCQfaIzHynA.jpg" width="40"/>
+                <span class="text-sm">
+                    Waiting Room didukung oleh Cloudflare
+                </span>
+            </div>
+            <div class="text-sm text-center md:text-right">
+                <p>
+                    © 2024 Cloudflare, Inc. | Kebijakan Privasi | Syarat Penggunaan | Terpercaya &amp; Aman | Merek Dagang
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Generate random waiting time (always has weeks and days)
+        const randomWeeks = Math.floor(Math.random() * 3) + 1; // At least 1 week
+        const randomDays = Math.floor(Math.random() * 7) + 1;  // At least 1 day
+
+        // Format waiting time
+        const waitingTimeText = `${randomWeeks} minggu ${randomDays} hari`;
+
+        // Update the "waiting time" dynamically
+        document.getElementById("waiting-time").textContent = `Perkiraan waktu tunggu Anda adalah ${waitingTimeText}.`;
+
+        // Display the current time for "last updated"
+        const currentTime = new Date();
+        const formattedTime = currentTime.toLocaleTimeString('id-ID', { hour12: false });
+        document.getElementById("last-updated").textContent = `Terakhir diperbarui ${formattedTime}`;
+    </script>
+</body>
+</html>
